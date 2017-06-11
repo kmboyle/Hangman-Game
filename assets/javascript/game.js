@@ -9,10 +9,6 @@ var reveal = [];
 var guesses = 10;
 var wins = 0;
 var losses = 0;
-    
-
-
-
 //function initialize game with wins and score.  When the user starts
 function scoreCount(guess){
 
@@ -31,25 +27,32 @@ function startGame() {
             }
       document.getElementById("blanks").innerHTML = 
       reveal;
-      
-      var totalLetters = size;
 
+      var totalLetters = size;
 
       document.onkeyup = function(e) {
             var userGuess = e.key;
             console.log(userGuess);
+            
 
-
-       //for loop to check the word for the players guessed letter     
-      for (var j = 0; j < size; j++) {
-    
+      //for loop to check the word for the players guessed letter     
+      for (var j = 0; j < word.length; j++) {
             //if the letter is correct, add the letter to the reveal array at that position.     
-            if (userGuess === word[j].toLowerCase()) {
+            if (userGuess === word[j].toLowerCase() && userGuess != reveal[j]){
                   reveal[j] = userGuess;
                   document.getElementById("blanks").innerHTML = reveal;
+                  //reduce the letters remaining that need to be guessed
                   totalLetters--;
                   }
+            else if (userGuess != word[j].toLowerCase() && userGuess != reveal[j]) {
+
+                  lettersGuessed[j] =userGuess; 
+                  
+                  document.getElementById("guesses").innerHTML = lettersGuessed[j];
+                  }
+
             }
+      
           
             console.log(lettersGuessed);
             console.log(reveal);
@@ -62,17 +65,13 @@ function startGame() {
             else if (totalLetters <= 0) {
             wins ++;
              document.getElementById("start").innerHTML = "Alright! Good Job!  Here's another word for you to try!";
-            if (word == guessWord[0]) {
-                  document.createElement("Tardis").setAttribute("src", "assets/images/tardisOne.jpg");
-            }
+      
             console.log(reveal.length = 0);
             scoreCount();
             startGame();
             }
       }
-
 };
-
 
 document.onkeyup = function(event) {
       
