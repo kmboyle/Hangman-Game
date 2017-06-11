@@ -1,0 +1,26 @@
+html {
+	position:relative;
+	min-height:100%;
+}
+body {
+	background-image: url("https://vignette1.wikia.nocookie.net/vampirediaries/images/c/cd/Doctor-who.jpg/revision/latest?cb=20140823013225");
+	color:white;
+}
+.drWho {
+	padding: 2px;
+	width:100%;
+}
+}
+.container-fluid, .jumbotron, {
+	padding: 2px;
+}
+h1 {
+	color:white;
+}
+.game {
+	background-color: black;
+}
+#score, #blanks {
+	margin-left: 40px;
+}
+
