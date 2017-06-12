@@ -5,6 +5,8 @@ html {
 body {
 	background-image: url("https://vignette1.wikia.nocookie.net/vampirediaries/images/c/cd/Doctor-who.jpg/revision/latest?cb=20140823013225");
 	color:white;
+	font-size:40px;
+	padding: 30px;
 }
 .drWho {
 	padding: 2px;
@@ -22,5 +24,6 @@ h1 {
 }
 #score, #blanks {
 	margin-left: 40px;
+	font-size:28px;
 }
 

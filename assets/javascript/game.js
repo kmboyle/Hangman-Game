@@ -2,18 +2,21 @@
 //randomly pick a word from the list of words, count the letters in the word, display the words letter count to the user in "_ _ ..." format.  Evaluate users guessed letter for each letter's position.  If correct, reveal letter.  If incorrect, deduct score (number of guesses remaining), and display incorrect letter. After the user wins/loses, the game should automatically display another word.
 
 
-var userGuess;
+var userGuess;//holds key user presses
 var guessWord = ["Tardis", "Companion", "TimeLord", "Gallifrey", "Daleks", "Cybermen", "Sontaran"];
-var lettersGuessed = [];
-var reveal = [];
+var lettersGuessed = [];//holds letters not in the word
+var reveal = []; //changes the _ to letters
 var guesses = 10;
 var wins = 0;
 var losses = 0;
 //function initialize game with wins and score.  When the user starts
-function scoreCount(guess){
+function scoreCount(){
 
       document.getElementById("score").innerHTML = " <li>Guesses: " + guesses + "</li>"+ "<li>Wins: " + wins + "</li><li> Losses: " + losses + "</li>";
       };
+function reset(){
+    return guesses = 10;
+     }
 
 //fuctions that starts the game
 //function that will display the amount of letters in the word.  Will need to get the length of the word, and then create the same length of _ characters.
@@ -22,11 +25,13 @@ function startGame() {
       
       console.log(word);
       var size = word.length;
+      var revealed = " ";
       for (var i = 0; i < size; i++) {
             reveal[i] = "_";
             }
       document.getElementById("blanks").innerHTML = 
       reveal;
+    
 
       var totalLetters = size;
 
@@ -34,39 +39,48 @@ function startGame() {
             var userGuess = e.key;
             console.log(userGuess);
             
-
       //for loop to check the word for the players guessed letter     
       for (var j = 0; j < word.length; j++) {
             //if the letter is correct, add the letter to the reveal array at that position.     
-            if (userGuess === word[j].toLowerCase() && userGuess != reveal[j]){
+            if (userGuess === word[j].toLowerCase()) {
                   reveal[j] = userGuess;
                   document.getElementById("blanks").innerHTML = reveal;
-                  //reduce the letters remaining that need to be guessed
-                  totalLetters--;
-                  }
-            else if (userGuess != word[j].toLowerCase() && userGuess != reveal[j]) {
-
-                  lettersGuessed[j] =userGuess; 
                   
-                  document.getElementById("guesses").innerHTML = lettersGuessed[j];
                   }
-
             }
-      
-          
+            
+           if (word.toLowerCase().indexOf(userGuess) === -1) {
+                  if (lettersGuessed.indexOf(userGuess) === -1) {
+
+                  lettersGuessed.push(userGuess); 
+                  
+                  document.getElementById("guesses").innerHTML = lettersGuessed;
+                  guesses--;
+                  scoreCount();
+                  }                
+            }
+            else if (reveal.indexOf(userGuess === -1 )){
+                  totalLetters--;
+                  scoreCount();
+            }
+
             console.log(lettersGuessed);
-            console.log(reveal);
+            console.log(totalLetters);
 
             if (guesses === 0) {
             losses ++;
             scoreCount();
-            console.log("sorry");
+            document.getElementById("start").innerHTML = "Sorry, you ran out of guesses.  Here, try again!";
+            guesses = reset();
+            startGame();
             }
             else if (totalLetters <= 0) {
             wins ++;
              document.getElementById("start").innerHTML = "Alright! Good Job!  Here's another word for you to try!";
       
-            console.log(reveal.length = 0);
+            reveal.length = 0;
+            lettersGuessed.length = 0;
+            guesses = reset();
             scoreCount();
             startGame();
             }
