@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hangman</title>
+	<link rel="icon" href="assets/images/TardisOne.jpg" type="image/jpg" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -14,27 +15,34 @@
       <div class="jumbotron">
 	    <img class="drWho" src="assets/images/header.jpg" alt="dr who">
      </div>
+     <div class = "row game text-center">
+      <div class = "col-md-12">
+       <h1>Hangman!</h1>
+       <h1 id = "winName"></h1>
+       </div>
+      </div>
         <div class="row">
 		<div class="col-md-6">
-			<img src="assets/images/Tardis.jpg" width="100%">
-			<img id = "tardis" src="">
+			<img id= "who" src="assets/images/Tardis.jpg" width="75%" alt="DrWho?">
 		</div> 
 		<div class = "row game">
 			<div class="col-md-6">
-				<h1>Hangman!</h1>
+				
 				<br>
 				<h1 id="start">Press any key to get started.</h1>
 			</div>
 		
-			<div class = "col-mid-6">
+			<div class = "col-md-6">
 				<ul id="score"></ul>
-			</div>
-			<div class ="col-mid-6">
-				<h3>Current Word</h3>
+				<h3></h3>
 				<p id="blanks"></p>
-				<p>Letters already guessed</p>
+				<h4 id ="list"></h4>
 				<p id="guesses"></p>
 			</div>
+			<audio id = "theme" autoplay>
+				<source  src="" type ="audio/mpeg">
+				your browser does not support audio
+			</audio>
 		
 		</div>
 	</div>
