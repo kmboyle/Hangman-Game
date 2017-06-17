@@ -138,13 +138,13 @@ function compare(userGuess, totalLetters, word, reveal){
 
             if (guesses === 0) {
             losses ++;
-            scoreCount();
             document.getElementById("start").innerHTML = "Sorry, you ran out of guesses.  Here, try again!";
             reveal.length = 0;
             lettersGuessed.length = 0;
               document.getElementById("guesses").innerHTML = lettersGuessed;
             guesses = reset();
             document.getElementById("hint").innerHTML = "";
+            scoreCount();
             startGame();
             }
          }
@@ -181,6 +181,8 @@ document.onkeyup = function(event) {
          scoreCount();   
          startGame(); 
 };
+
+document.getElementById("hiddenInput").onclick= function() {keyboard()};
 
 
 
