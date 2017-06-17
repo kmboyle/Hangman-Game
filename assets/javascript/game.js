@@ -1,6 +1,4 @@
 
-    //If correct, reveal letter.  If incorrect, deduct score (number of guesses remaining), and display incorrect letter. After the user wins/loses, the game should automatically display another word.
-
 var userGuess;//holds key user presses
 var guessWord = ["Tardis", "Companion", "TimeLord", "Gallifrey", "Daleks", "Cybermen", "Sontaran"];
 var lettersGuessed = [];//holds letters not in the word
@@ -60,8 +58,6 @@ function display(word){
 function startGame() {
       //randomly pick a word from the list of words
       var word = (guessWord[Math.floor(Math.random() * guessWord.length)]); 
-      
-      console.log(word);
       //count the letters in the word
       var size = word.length;
 
@@ -132,10 +128,6 @@ function compare(userGuess, totalLetters, word, reveal){
                   scoreCount();
                   }                
             }
-
-            console.log(lettersGuessed);
-            console.log(totalLetters);
-
             if (guesses === 0) {
             losses ++;
             document.getElementById("start").innerHTML = "Sorry, you ran out of guesses.  Here, try again!";
@@ -176,18 +168,17 @@ function hint(word) {
 
 document.onkeyup = function(event) {
       
-        document.getElementById("start").innerHTML = "Guess the word! You get 10 guesses.";
-        inputElement.focus(); 
+        document.getElementById("start").innerHTML = "Guess the word! You get 10 guesses."; 
          scoreCount();   
          startGame(); 
 };
 
 //Mobile Keyboard
-document.getElementById("start help").addEventListener('click', function(){
+document.getElementById("keys").addEventListener('click', function(){
     var inputElement = document.getElementById('hiddenInput');
     inputElement.style.visibility = 'visible'; // unhide the input
     inputElement.focus(); // focus on it so keyboard pops
-    inputElement.style.visibility = 'hidden'; // hide it again
+    inputElement.style.visibility = 'hidden'; // hide it again 
 });
 
 
