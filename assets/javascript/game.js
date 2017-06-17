@@ -183,7 +183,7 @@ document.onkeyup = function(event) {
 };
 
 //Mobile Keyboard
-document.getElementById("start").addEventListener('click', function(){
+document.getElementById("start help").addEventListener('click', function(){
     var inputElement = document.getElementById('hiddenInput');
     inputElement.style.visibility = 'visible'; // unhide the input
     inputElement.focus(); // focus on it so keyboard pops
