@@ -10,7 +10,7 @@ var wins = 0;
 var losses = 0;
 var counter = 0;
 var inputElement = document.getElementById("hiddenInput");
-inputElement.focus();
+
 
 //function initialize game with wins and score.  When the user starts
 function scoreCount(){
@@ -176,7 +176,8 @@ function hint(word) {
 
 document.onkeyup = function(event) {
       
-        document.getElementById("start").innerHTML = "Guess the word! You get 10 guesses."; 
+        document.getElementById("start").innerHTML = "Guess the word! You get 10 guesses.";
+        inputElement.focus(); 
          scoreCount();   
          startGame(); 
 };
