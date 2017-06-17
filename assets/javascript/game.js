@@ -9,6 +9,8 @@ var guesses = 10;
 var wins = 0;
 var losses = 0;
 var counter = 0;
+var inputElement = document.getElementById("hiddenInput");
+inputElement.focus();
 
 //function initialize game with wins and score.  When the user starts
 function scoreCount(){
@@ -112,6 +114,7 @@ function compare(userGuess, totalLetters, word, reveal){
             reveal.length = 0;
             lettersGuessed.length = 0;
 	    document.getElementById("guesses").innerHTML = lettersGuessed;
+       document.getElementById("hint").innerHTML = "";
             guesses = reset();
             scoreCount();
             startGame();
@@ -141,6 +144,7 @@ function compare(userGuess, totalLetters, word, reveal){
             lettersGuessed.length = 0;
               document.getElementById("guesses").innerHTML = lettersGuessed;
             guesses = reset();
+            document.getElementById("hint").innerHTML = "";
             startGame();
             }
          }
