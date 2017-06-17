@@ -1,11 +1,10 @@
-html {
 
-}
 body {
 	background-image: url("https://vignette1.wikia.nocookie.net/vampirediaries/images/c/cd/Doctor-who.jpg/revision/latest?cb=20140823013225");
 	color:#ffffff;	
 	position:relative;
 	min-height:100%;
+	text-align: center;
 }
 .drWho {
 	padding: 2px;
@@ -36,4 +35,8 @@ h1 {
   padding:1%;
   background-color: #17254f;
   opacity:.5;
+  }
+  button {
+	background-color: white;
+	color: black;
   }

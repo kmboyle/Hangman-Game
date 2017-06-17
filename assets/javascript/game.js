@@ -8,6 +8,7 @@ var reveal = []; //changes the _ to letters
 var guesses = 10;
 var wins = 0;
 var losses = 0;
+var counter = 0;
 
 //function initialize game with wins and score.  When the user starts
 function scoreCount(){
@@ -78,6 +79,9 @@ function startGame() {
             console.log(userGuess);
 	    compare(userGuess, totalLetters, word, reveal);	
 	}
+   document.getElementById("help").onclick = function() { 
+       hint(word);
+   };
 };
             
       //for loop to check the word for the players guessed letter  
@@ -104,11 +108,7 @@ function compare(userGuess, totalLetters, word, reveal){
 	    if (!remaining){
             wins ++;
             display(word);
-             document.getElementById("start").innerHTML = "Alright! Good Job!  Here's another word for you to try!  <br> Guess the word! You get 10 guesses.";
-
-             
-       
-      
+             document.getElementById("start").innerHTML = "Alright! Good Job!  Here's another word for you to try!  <br> Guess the word! You get 10 guesses.";      
             reveal.length = 0;
             lettersGuessed.length = 0;
 	    document.getElementById("guesses").innerHTML = lettersGuessed;
@@ -142,25 +142,33 @@ function compare(userGuess, totalLetters, word, reveal){
               document.getElementById("guesses").innerHTML = lettersGuessed;
             guesses = reset();
             startGame();
-            }/*
-	   else {
-		document.onkeyup = function(e) {
-            var userGuess = e.key;
-            console.log(userGuess);
-	    compare(userGuess, totalLetters, word, reveal);	
-	    }
-	   }*/
+            }
+         }
+
+function hint(word) {
+   if (word == guessWord[0]) {
+         document.getElementById("hint").innerHTML = "Hello...? Hello...?";
+         }
+      else if (word == guessWord[1]) {
+         document.getElementById("hint").innerHTML = "Somethings are just more fun together.";
+      }
+      else if (word == guessWord[2]) {
+         document.getElementById("hint").innerHTML = "Two hearts are better than one.";
+      }
+      else if (word == guessWord[3]) {
+         document.getElementById("hint").innerHTML = "Rocks and dust, dead before it's time.";
+      }
+      else if (word == guessWord[4]) {
+         document.getElementById("hint").innerHTML = "Bent on conquest and destruction of inferior races.";
+      }
+     else if (word == guessWord[5]) {
+         document.getElementById("hint").innerHTML = "Coldly logical and calculating, their emotions deleted.";
+      }
+     else if (word == guessWord[6]) {
+         document.getElementById("hint").innerHTML = "Warrier race, ruthless and fearless of death.";
+      }
 };
 
-/*
-var HangmanGame{
-	
-startGame: function(),
-compare: function(),
-scoreCount: function(),
-reset: function(),
-}
-*/
 
 document.onkeyup = function(event) {
       
@@ -168,3 +176,6 @@ document.onkeyup = function(event) {
          scoreCount();   
          startGame(); 
 };
+
+
+
