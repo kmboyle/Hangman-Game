@@ -73,9 +73,8 @@ function startGame() {
       var totalLetters = size;
 
       document.onkeyup = function(e) {
-            var userGuess = e.key;
-            console.log(userGuess);
-	    compare(userGuess, totalLetters, word, reveal);	
+         var userGuess = e.key;
+	      compare(userGuess, totalLetters, word, reveal);	
 	}
    document.getElementById("help").onclick = function() { 
        hint(word);
@@ -90,7 +89,7 @@ function compare(userGuess, totalLetters, word, reveal){
       //Evaluate users guessed letter for each letter's position.
       for (var j = 0; j < word.length; j++) {
             //if the letter is correct, add the letter to the reveal array at that position. Also      
-            if (userGuess === word[j].toLowerCase()) {
+            if (userGuess.toLowerCase() === word[j].toLowerCase()) {
                   reveal[j] = userGuess;
 		  correct = true;
                   document.getElementById("blanks").innerHTML = reveal.join(" ");
@@ -161,11 +160,11 @@ function hint(word) {
          document.getElementById("hint").innerHTML = "Coldly logical and calculating, their emotions deleted.";
       }
      else if (word == guessWord[6]) {
-         document.getElementById("hint").innerHTML = "Warrier race, ruthless and fearless of death.";
+         document.getElementById("hint").innerHTML = "Warrior race, ruthless and fearless of death.";
       }
 };
 
-
+//start of game
 document.onkeyup = function(event) {
       
         document.getElementById("start").innerHTML = "Guess the word! You get 10 guesses."; 
