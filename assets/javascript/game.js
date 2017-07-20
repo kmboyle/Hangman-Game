@@ -1,6 +1,6 @@
 
 var userGuess;//holds key user presses
-var guessWord = ["Tardis", "Companion", "TimeLord", "Gallifrey", "Daleks", "Cybermen", "Sontaran"];
+var guessWord = ["TARDIS", "COMPANION", "TIMELORD", "GALLIFREY", "DALEKS", "CYBERMEN", "SONTARAN"];
 var lettersGuessed = [];//holds letters not in the word
 var reveal = []; //changes the _ to letters
 var guesses = 10;
@@ -73,9 +73,26 @@ function startGame() {
       var totalLetters = size;
 
       document.onkeyup = function(e) {
-         var userGuess = e.key;
-	      compare(userGuess, totalLetters, word, reveal);	
-	}
+      var asciNum = e.which;
+      userGuess = String.fromCharCode(asciNum);
+     console.log(userGuess);
+      
+
+      if (asciNum < 65 || asciNum > 90)
+       {
+             // it's a symbol
+            alert("sorry, that's not a letter");
+        
+          }
+      else {
+         
+              // it's a letter
+            compare(userGuess, totalLetters, word, reveal);	
+
+                  }
+       }
+
+	
    document.getElementById("help").onclick = function() { 
        hint(word);
    };
@@ -88,15 +105,18 @@ function compare(userGuess, totalLetters, word, reveal){
 	var remaining = false;
       //Evaluate users guessed letter for each letter's position.
       for (var j = 0; j < word.length; j++) {
+                     
+          
             //if the letter is correct, add the letter to the reveal array at that position. Also      
-            if (userGuess.toLowerCase() === word[j].toLowerCase()) {
+            if (userGuess === word[j]) {
                   reveal[j] = userGuess;
 		  correct = true;
                   document.getElementById("blanks").innerHTML = reveal.join(" ");
                   }
 	    if (reveal[j] === "_") {
 		  remaining = true;
-		  }
+              }
+
 	}  
       //keep count of correct guesses and wins
 	if (correct){
@@ -116,10 +136,10 @@ function compare(userGuess, totalLetters, word, reveal){
             }
 	}
 	//this checks to see if the letter is not in the word and if the letter is not already in their guessed list.  If both are true, deduct 1 guess, and add letter to the already guessed list.
-  
-     if (word.toLowerCase().indexOf(userGuess) === -1) {
+      console.log(word.indexOf(userGuess));
+     if (word.indexOf(userGuess) === -1) {
          if (lettersGuessed.indexOf(userGuess) === -1) {
-
+                  console.log("whoa");
                   lettersGuessed.push(userGuess); 
                   
                   document.getElementById("guesses").innerHTML = lettersGuessed;
