@@ -75,7 +75,6 @@ function startGame() {
       document.onkeyup = function(e) {
       var asciNum = e.which;
       userGuess = String.fromCharCode(asciNum);
-     console.log(userGuess);
       
 
       if (asciNum < 65 || asciNum > 90)
@@ -129,19 +128,16 @@ function compare(userGuess, totalLetters, word, reveal){
             reveal.length = 0;
             lettersGuessed.length = 0;
 	    document.getElementById("guesses").innerHTML = lettersGuessed;
-       document.getElementById("hint").innerHTML = "";
+       	    document.getElementById("hint").innerHTML = "";
             guesses = reset();
             scoreCount();
             startGame();
             }
 	}
 	//this checks to see if the letter is not in the word and if the letter is not already in their guessed list.  If both are true, deduct 1 guess, and add letter to the already guessed list.
-      console.log(word.indexOf(userGuess));
      if (word.indexOf(userGuess) === -1) {
          if (lettersGuessed.indexOf(userGuess) === -1) {
-                  console.log("whoa");
                   lettersGuessed.push(userGuess); 
-                  
                   document.getElementById("guesses").innerHTML = lettersGuessed;
                   guesses--;
                   scoreCount();
